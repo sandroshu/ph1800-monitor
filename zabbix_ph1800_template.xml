@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2022-09-03T11:08:34Z</date>
+    <groups>
+        <group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>df16b78395fd42e990059931afd052fb</uuid>
+            <template>Mono Solar Inverter</template>
+            <name>Mono Solar Inverter</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>494dc47b2a1f4e1f808832e2b72a92e7</uuid>
+                    <name>Absorb charger current (setting)</name>
+                    <key>monoinv[AbsorbChargerCurrent]</key>
+                    <delay>15m</delay>
+                    <history>30d</history>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>afe5a888bfa7405b8389cb4ac5135bc6</uuid>
+                    <name>Absorption Voltage (setting)</name>
+                    <key>monoinv[AbsorptionVoltage]</key>
+                    <delay>15m</delay>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>21c2b698afa5449cabd1e3a5b1444215</uuid>
+                    <name>Accumulated Power</name>
+                    <key>monoinv[AccumulatedPower]</key>
+                    <delay>15m</delay>
+                    <value_type>FLOAT</value_type>
+                    <units>kW</units>
+                </item>
+                <item>
+                    <uuid>11ccbf56f16e4d88903973f8bd6e6208</uuid>
+                    <name>AC Radiator Temperature</name>
+                    <key>monoinv[AcRadiatorTemperature]</key>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                </item>
+                <item>
+                    <uuid>819cba013080486a86ae29e58b48473b</uuid>
+                    <name>AC Volt Grade</name>
+                    <key>monoinv[AcVoltageGrade]</key>
+                    <history>3d</history>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>a33d7ab20b864738ae08724065e56a12</uuid>
+                    <name>Battery Current</name>
+                    <key>monoinv[BattCurrent]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>A</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>e8d462323e284d1d82fe35239c23b708</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[BattCurrent])&lt;=-5</expression>
+                            <name>Charging battery</name>
+                            <priority>INFO</priority>
+                            <description>Battery is now charging (current in negative value)
+Normal/fast charging (5 or more amps)</description>
+                        </trigger>
+                        <trigger>
+                            <uuid>e584263d22b642959394db0c1d0a4732</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[BattCurrent])&lt;0 and last(/Mono Solar Inverter/monoinv[BattCurrent])&gt;-5</expression>
+                            <name>Charging battery (slow)</name>
+                            <priority>INFO</priority>
+                            <description>Battery is now charging (current in negative value)
+Slow charging (less than 5 amps)</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>49b0025fc1504121b498ed50b456dd12</uuid>
+                    <name>Battery relay</name>
+                    <key>monoinv[BatteryRelay]</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>f01f69c034914e62b2666303665f4627</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[BatteryRelay])&lt;&gt;&quot;Connect&quot;</expression>
+                            <name>Battery relay not connected</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>4ef17d1e1f4d47bdaba75591f9bdf2b9</uuid>
+                    <name>Battery Voltage</name>
+                    <key>monoinv[BatteryVoltage]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>5aaac90c68764b078ee5f91e450e26d7</uuid>
+                    <name>Battery Power</name>
+                    <key>monoinv[BattPower]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>W</units>
+                </item>
+                <item>
+                    <uuid>673d93ecb625483ba6c37a6652c83d39</uuid>
+                    <name>Bus voltage</name>
+                    <key>monoinv[BusVoltage]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>0dbc0678c4eb419b9e5b262cd8ea0112</uuid>
+                    <name>Charger Current</name>
+                    <key>monoinv[ChargerCurrent]</key>
+                    <delay>15s</delay>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>b399874398bf4abc9df118ef97fc8896</uuid>
+                    <name>Charger Power</name>
+                    <key>monoinv[ChargerPower]</key>
+                    <delay>15s</delay>
+                    <history>30d</history>
+                    <units>W</units>
+                </item>
+                <item>
+                    <uuid>05c2b318e0304523bf885bbe5cc2f08e</uuid>
+                    <name>Charger source priority</name>
+                    <key>monoinv[ChargerSourcePriority]</key>
+                    <delay>15m</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>fe97e5dc32c44811a4675f44955838e1</uuid>
+                    <name>Charger work state</name>
+                    <key>monoinv[ChargerWorkstate]</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <uuid>08ac47fe08204f549f1a594b7c26d7a8</uuid>
+                    <name>Charging State</name>
+                    <key>monoinv[ChargingState]</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <uuid>61f5ff641a2644bab22af98a65b2eb26</uuid>
+                    <name>Control Current</name>
+                    <key>monoinv[ControlCurrent]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>80545fa92efc4c1b930ce86d246a473f</uuid>
+                    <name>DC Radiator Temperature</name>
+                    <key>monoinv[DcRadiatorTemperature]</key>
+                    <history>3d</history>
+                    <units>°C</units>
+                </item>
+                <item>
+                    <uuid>2efbba4430c2418790bfe153910ab5c8</uuid>
+                    <name>DC relay state</name>
+                    <key>monoinv[DCRelayState]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <uuid>89077f36d53549b893676977f3ff84b2</uuid>
+                    <name>Earth relay state</name>
+                    <key>monoinv[EarthRelayState]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <uuid>5a07797d4204487a9b1793aca1e139cc</uuid>
+                    <name>Output source priority (setting)</name>
+                    <key>monoinv[EnergyUseMode]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <description>1 = SUB
+2 = SBU
+3 = SOL
+4 = UTI</description>
+                </item>
+                <item>
+                    <uuid>d3a9595a523745588b26ae2a034f1d9a</uuid>
+                    <name>Float Voltage (setting)</name>
+                    <key>monoinv[FloatVoltage]</key>
+                    <delay>15m</delay>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>5b56af2dcf4643ddbdaec9d69546eb43</uuid>
+                    <name>Grid Current</name>
+                    <key>monoinv[GridCurrent]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>f00e8b8dd7a3421997bdcc4d5a8700c6</uuid>
+                    <name>Grid Frequency</name>
+                    <key>monoinv[GridFrequency]</key>
+                    <delay>15s</delay>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>Hz</units>
+                </item>
+                <item>
+                    <uuid>e4717d0e5eb24aeb970368771ee77aea</uuid>
+                    <name>Max grid charger current</name>
+                    <key>monoinv[GridMaxChargerCurrentSet]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>c3648e8f46924285becb2514a8c9d6f4</uuid>
+                    <name>Grid protect standard (setting)</name>
+                    <key>monoinv[GridProtectStandard]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <description>0 = VDE4105</description>
+                </item>
+                <item>
+                    <uuid>2f6302f9d4f6412495ddd449c0c88bcd</uuid>
+                    <name>Grid relay state</name>
+                    <key>monoinv[GridRelayState]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>005d9cd1c30b488da42967a7bb353fc9</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[GridRelayState])&lt;&gt;&quot;Connect&quot;</expression>
+                            <name>Grid relay not connected</name>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>e24e373cd535487fb612a43573045f6b</uuid>
+                    <name>Grid voltage</name>
+                    <key>monoinv[GridVoltage]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                </item>
+                <item>
+                    <uuid>16e2b39ed6264e7db1dc514e74a3dbdf</uuid>
+                    <name>Battery High voltage (setting)</name>
+                    <key>monoinv[InverterBatteryHighVoltage]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>c576111a77d049eaa463472d2121a630</uuid>
+                    <name>Battery Low voltage (setting)</name>
+                    <key>monoinv[InverterBatteryLowVoltage]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                    <description>Inverter will cut off Battery at this point</description>
+                </item>
+                <item>
+                    <uuid>bec8af827ff1411db16b25c8866aee90</uuid>
+                    <name>Battery Voltage (at inverter)</name>
+                    <key>monoinv[InverterBatteryVoltage]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>4d29055a1c2e4c5b9185e23ac62e9191</uuid>
+                    <name>Inverter to Grid enabled (setting)</name>
+                    <key>monoinv[InverterDischargerToGridEnable]</key>
+                    <delay>15m</delay>
+                    <history>7d</history>
+                    <description>0 = Disabled
+1 = Enabled</description>
+                </item>
+                <item>
+                    <uuid>88ecbbeffeae41ceb1627d684d2dc9cb</uuid>
+                    <name>Inverter Frequency</name>
+                    <key>monoinv[InverterFrequency]</key>
+                    <delay>15s</delay>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>Hz</units>
+                </item>
+                <item>
+                    <uuid>41473c7784f545baa4135cdf69a43f30</uuid>
+                    <name>Inverter max discharge current</name>
+                    <key>monoinv[InverterMaxDischargerCurrent]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>0edf8c347f37488da2b77aa65fa9b701</uuid>
+                    <name>Inverter Off-Grid mode enabled (setting)</name>
+                    <key>monoinv[InverterOffgridWorkEnable]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <description>1 = Enabled
+0 = Disabled</description>
+                </item>
+                <item>
+                    <uuid>eed1b703da044f4dbbf388168bc4c7a0</uuid>
+                    <name>Inverter output frequency (setting)</name>
+                    <key>monoinv[InverterOutputFrequencySet]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <description>It is in Hz with 2 extra digits (eg. 49.98Hz is 4998)</description>
+                </item>
+                <item>
+                    <uuid>a3ffa546bfd6421da1ebb80b726b325c</uuid>
+                    <name>Inverter output voltage (setting)</name>
+                    <key>monoinv[InverterOutputVoltageSet]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <units>V</units>
+                </item>
+                <item>
+                    <uuid>8f0825ba56214ec099def800abc7e037</uuid>
+                    <name>Inverter relay state</name>
+                    <key>monoinv[InverterRelayState]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>0adf67e6aea34cc5a8769d93d9c17dde</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[InverterRelayState])&lt;&gt;&quot;Connect&quot;</expression>
+                            <name>Inverter relay not connected</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>b696f69d46b047d3af5e684264f9bad2</uuid>
+                    <name>Inverter search mode enabled (setting)</name>
+                    <key>monoinv[InverterSearchModeEnable]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <description>0 = Disabled
+1 = Enabled</description>
+                </item>
+                <item>
+                    <uuid>dec3e48b958844bd8aa784aa1510663a</uuid>
+                    <name>Inverter Voltage</name>
+                    <key>monoinv[InverterVoltage]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                </item>
+                <item>
+                    <uuid>b1789e60c0ce4a4f9dd4ab57ace9d2fc</uuid>
+                    <name>Load Current</name>
+                    <key>monoinv[LoadCurrent]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>541e08abc64341a88b9afedb55664dd4</uuid>
+                    <name>Load percent</name>
+                    <key>monoinv[LoadPercent]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>3a78c865f98c4686bbe953a94b88e30d</uuid>
+                    <name>Load relay state</name>
+                    <key>monoinv[LoadRelayState]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <uuid>8faeb8a0288843b3a21aa8da98a16f09</uuid>
+                    <name>Max charger current (setting)</name>
+                    <key>monoinv[MaxChargerCurrent]</key>
+                    <delay>15m</delay>
+                    <history>30d</history>
+                </item>
+                <item>
+                    <uuid>1f9dd002be464d17b2513ad85ca1d6ae</uuid>
+                    <name>Max combined charger current</name>
+                    <key>monoinv[MaxCombineChargerCurrent]</key>
+                    <delay>15m</delay>
+                    <history>7d</history>
+                    <units>A</units>
+                </item>
+                <item>
+                    <uuid>d9d8815ad0a247f29ae03b417797d54f</uuid>
+                    <name>MPPT State</name>
+                    <key>monoinv[MpptState]</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>9e4d57d30c284026b3a1ca6080a8da34</uuid>
+                            <expression>change(/Mono Solar Inverter/monoinv[MpptState])=1</expression>
+                            <name>MPPT state changed</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>480121090c814e2fac872d6b62f4d651</uuid>
+                    <name>Battery stop discharging voltage (setting)</name>
+                    <key>monoinv[NormalVoltagePoint]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                    <description>Inverter will switch to Grid if available at this point</description>
+                </item>
+                <item>
+                    <uuid>1db4e3eb97b8469dbfc25882a5b3ef11</uuid>
+                    <name>N Line relay state</name>
+                    <key>monoinv[N_LineRelayState]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <uuid>627483f957dd459c802347fda25ccf77</uuid>
+                    <name>Grid (active power)</name>
+                    <key>monoinv[PGrid]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <units>W</units>
+                </item>
+                <item>
+                    <uuid>cf0d05ac46b047459d77a1a942dd0518</uuid>
+                    <name>Inverter (active power)</name>
+                    <key>monoinv[PInverter]</key>
+                    <delay>15s</delay>
+                    <history>30d</history>
+                    <units>W</units>
+                </item>
+                <item>
+                    <uuid>07020d2a86924b8fa7eae02d1fcae20e</uuid>
+                    <name>Load (active power)</name>
+                    <key>monoinv[PLoad]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>bb8915e51a174e2e8e2f031840f3f4bf</uuid>
+                    <name>PV relay</name>
+                    <key>monoinv[PvRelay]</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>59456ca1c654420f955ae453310a8edb</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[PvRelay])&lt;&gt;&quot;Connect&quot;</expression>
+                            <name>PV relay not connected</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>b541694704614fbaa953d6fe24af8dbe</uuid>
+                    <name>PV Voltage</name>
+                    <key>monoinv[PvVoltage]</key>
+                    <delay>15s</delay>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>be1e34e15f6c4a4e9922b2198cfed791</uuid>
+                            <expression>avg(/Mono Solar Inverter/monoinv[PvVoltage],#3)&lt;{$PANEL_VOLTAGE}-2 and avg(/Mono Solar Inverter/monoinv[PvVoltage],#3)&gt;0</expression>
+                            <name>PV voltage too low</name>
+                            <priority>INFO</priority>
+                            <description>Probably not enough sun or voltage drop too big</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>33ea675e37ea480bb9dfa7628ad0083b</uuid>
+                    <name>Grid (reactive power)</name>
+                    <key>monoinv[Qgrid]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                    <units>W</units>
+                </item>
+                <item>
+                    <uuid>b1d38f5b20b240db8da8019aaa5dc25f</uuid>
+                    <name>Inverter (reactive power)</name>
+                    <key>monoinv[Qinverter]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>40a0f4eb4e6142fa8a0506cac3478f94</uuid>
+                    <name>Load (reactive power)</name>
+                    <key>monoinv[Qload]</key>
+                    <delay>15s</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>1d472d2903ad477aac549cb08930aff2</uuid>
+                    <name>Radiator temperature</name>
+                    <key>monoinv[RadiatorTemperature]</key>
+                    <history>30d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                </item>
+                <item>
+                    <uuid>d2f9c8a9dc674b0cb968cc1956de5ba5</uuid>
+                    <name>Rated power</name>
+                    <key>monoinv[RatedPower]</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                </item>
+                <item>
+                    <uuid>1def40346e344f0a95114eca8c0a14d3</uuid>
+                    <name>Solar supply priority (setting)</name>
+                    <key>monoinv[SolarUseAim]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <description>0 = LBU (Load first)
+1 = BLU (Battery charging first)</description>
+                </item>
+                <item>
+                    <uuid>de4fa02d06174ec388b6e7d337ddccf3</uuid>
+                    <name>Start sell voltage point (setting)</name>
+                    <key>monoinv[StartSellVoltagePoint]</key>
+                    <delay>15m</delay>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>V</units>
+                    <description>System will switch to Battery power at this battery voltage</description>
+                </item>
+                <item>
+                    <uuid>abf90a7ec6e147a98ed3f4ebf492d91e</uuid>
+                    <name>Transformer Temperature</name>
+                    <key>monoinv[TransformerTemperature]</key>
+                    <history>3d</history>
+                    <value_type>FLOAT</value_type>
+                    <units>°C</units>
+                </item>
+                <item>
+                    <uuid>d137b86bc0dc43ae873906695f9a9474</uuid>
+                    <name>Work state</name>
+                    <key>monoinv[WorkState]</key>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <uuid>bd2dd850a7ea454fa7b6adf65cef57ac</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[WorkState])=&quot;ByPass&quot;</expression>
+                            <name>Inverter is in ByPass mode</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>8eb7a12baf7841b5a89451f0d6325dfa</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[WorkState])=&quot;Grid charging&quot;</expression>
+                            <name>Inverter is in Grid charging mode</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>3bcf6bee26384d0b80775daf52d61b64</uuid>
+                            <expression>last(/Mono Solar Inverter/monoinv[WorkState])=&quot;OffGrid&quot;</expression>
+                            <name>Inverter is in OffGrid mode</name>
+                            <priority>INFO</priority>
+                            <description>Inverter is getting power from PV and/or Battery, Grid power not in use</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>1f3055c43a394039ac61566a882edf40</uuid>
+                    <name>Accumulated Discharger Power</name>
+                    <key>monoinv[_accumulatedDischargerPower]</key>
+                    <value_type>FLOAT</value_type>
+                    <units>kW</units>
+                </item>
+                <item>
+                    <uuid>1ef84a749ec64d70b9b29d5137a71541</uuid>
+                    <name>Accumulated Grid Charger Power</name>
+                    <key>monoinv[_accumulatedGridChargerPower]</key>
+                    <value_type>FLOAT</value_type>
+                    <units>kW</units>
+                </item>
+                <item>
+                    <uuid>3116ec5a43bd4c658dc077015f6d22e9</uuid>
+                    <name>Accumulated Load Power</name>
+                    <key>monoinv[_accumulatedLoadPower]</key>
+                    <value_type>FLOAT</value_type>
+                    <units>kW</units>
+                </item>
+                <item>
+                    <uuid>3fab2e1330004e1b9793bd3cb832c943</uuid>
+                    <name>Accumulated Self Use Power</name>
+                    <key>monoinv[_accumulatedSelfUsePower]</key>
+                    <value_type>FLOAT</value_type>
+                    <units>kW</units>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$PANEL_VOLTAGE}</macro>
+                    <value>31</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <uuid>dfb968bfd62540f6b6dd63d42c9e3e2e</uuid>
+            <expression>last(/Mono Solar Inverter/monoinv[BatteryVoltage])&lt;last(/Mono Solar Inverter/monoinv[FloatVoltage])-0.2</expression>
+            <name>Battery bellow set floating voltage</name>
+            <priority>INFO</priority>
+            <description>Battery voltage bellow floating voltage -0.2</description>
+        </trigger>
+        <trigger>
+            <uuid>5fcbbd0300e3472eb49f6e84093d6a1f</uuid>
+            <expression>avg(/Mono Solar Inverter/monoinv[BatteryVoltage],3)&lt;last(/Mono Solar Inverter/monoinv[NormalVoltagePoint])</expression>
+            <name>Battery voltage dropped bellow discharge voltage</name>
+            <priority>INFO</priority>
+        </trigger>
+        <trigger>
+            <uuid>36855a346d634089b513303858f95ab7</uuid>
+            <expression>avg(/Mono Solar Inverter/monoinv[BatteryVoltage],3)&lt;=last(/Mono Solar Inverter/monoinv[NormalVoltagePoint])</expression>
+            <name>Battery voltage low</name>
+            <priority>WARNING</priority>
+        </trigger>
+        <trigger>
+            <uuid>5d65e791e54342a6b86b646ad167466e</uuid>
+            <expression>avg(/Mono Solar Inverter/monoinv[BatteryVoltage],3)&gt;=last(/Mono Solar Inverter/monoinv[InverterBatteryHighVoltage])</expression>
+            <name>Battery voltage too high</name>
+            <priority>HIGH</priority>
+        </trigger>
+        <trigger>
+            <uuid>a03f48f5b9604cce889e0f501486d594</uuid>
+            <expression>avg(/Mono Solar Inverter/monoinv[BatteryVoltage],3)&lt;=last(/Mono Solar Inverter/monoinv[InverterBatteryLowVoltage])</expression>
+            <name>Battery voltage too low</name>
+            <priority>AVERAGE</priority>
+        </trigger>
+        <trigger>
+            <uuid>315e143468884ece94e42f74190638d4</uuid>
+            <expression>last(/Mono Solar Inverter/monoinv[GridVoltage])&gt;last(/Mono Solar Inverter/monoinv[AcVoltageGrade])+10</expression>
+            <name>Grid input voltage too high</name>
+            <priority>AVERAGE</priority>
+        </trigger>
+        <trigger>
+            <uuid>dbd41ad621f1481ebc8b93a3b0db5d40</uuid>
+            <expression>last(/Mono Solar Inverter/monoinv[GridVoltage])&lt;last(/Mono Solar Inverter/monoinv[AcVoltageGrade])-10</expression>
+            <name>Grid input voltage too low</name>
+            <priority>AVERAGE</priority>
+        </trigger>
+        <trigger>
+            <uuid>c72bdecfb18c4800ae8c7e090524485b</uuid>
+            <expression>last(/Mono Solar Inverter/monoinv[Qinverter])&gt;=last(/Mono Solar Inverter/monoinv[RatedPower])-100</expression>
+            <name>Inverter power limit reached</name>
+            <priority>AVERAGE</priority>
+        </trigger>
+    </triggers>
+</zabbix_export>
