@@ -15,7 +15,7 @@ I am using DietPi OS (but Raspbian, Debian, Ubuntu should work too).
    (you should see a JSON object in return with values. If you see null as values, reset the inverter)
  - Go one level up (/mnt/dietpi_userdata) and clone my repo: https://github.com/sandroshu/ph1800-monitor.git
  - Enter the ph1800-monitor directory and make MonoInverter.sh executable: `chmod +x MonoInverter.sh`
- - Set up a cronjob that runs this command every minute: `flock -n /tmp/monoinverter.poller -c "/mnt/dietpi_userdata/MonoInverter.sh"`
+ - Set up a cronjob that runs this command every minute: `flock -n /tmp/monoinverter.poller -c "/mnt/dietpi_userdata/ph1800-monitor/MonoInverter.sh"`
    (Optionally you could create a systemd service that runs the MonoInverter.php script every x seconds, 15+s recommended)
 
  At this point you have monitoring active and every parameter with its value gets written to /tmp/MonoInverter/* every time the script runs.
