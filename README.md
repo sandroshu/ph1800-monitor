@@ -37,4 +37,5 @@ I still need more info to document the Inverter parameters better, it's not 100%
 
 ### Feel free to contribute to the project and add/correct these.
 
+![zabbix demo](https://github.com/sandroshu/ph1800-monitor/blob/main/zabbix.png?raw=true)
 
